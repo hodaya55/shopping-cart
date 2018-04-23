@@ -1,15 +1,6 @@
 // an array with all of our cart items
 var cart = [];
 
-var _countItemInArr = function (name) {
-  var count = 0;
-  for (var i = 0; i < cart.length; ++i) {
-    if (cart[i].name === name)
-      count++;
-  }
-  return count;
-}
-
 var updateCart = function () {
   // Write this function. In this function we render the page.
   // Meaning we make sure that all our cart items are displayed in the browser.
