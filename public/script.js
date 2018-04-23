@@ -19,10 +19,13 @@ var updateCart = function () {
 
   var total = 0;
   for (var i in cart) {
+    var trash = '<a style="text-decoration: none;cursor: pointer;color:#323030cc;font-size: 17px;" class="removeItem" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
     if (cart[i].amount !== 1)
-      $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price * cart[i].amount + ' (' + cart[i].amount + ')' + ' </span> <br>');
+      $('.cart-list').append('<span>' + cart[i].name
+        + ' - $' + cart[i].price * cart[i].amount + ' (' + cart[i].amount + ')' + trash);
     else
-      $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price + ' </span> <br>');
+      $('.cart-list').append('<span>' + cart[i].name
+        + ' - $' + cart[i].price + trash);
 
     total += cart[i].price * cart[i].amount;
   }
@@ -86,6 +89,16 @@ $('.add-to-cart').on('click', function () {
 $('.clear-cart').on('click', function () {
   clearCart();
 });
+
+$('.cart-list').on('click', '.removeItem', function () {
+  var index = $(this).data().id;
+  console.log("remove index: " + index);
+  cart.splice(index, 1);
+  // $(this).closest('span').remove(); // remove from page
+  updateCart();
+});
+
+
 
 // update the cart as soon as the page loads!
 updateCart();
