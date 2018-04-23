@@ -1,18 +1,30 @@
 // an array with all of our cart items
 var cart = [];
 
+var _countItemInArr = function (name) {
+  var count = 0;
+  for (var i = 0; i < cart.length; ++i) {
+    if (cart[i].name === name)
+      count++;
+  }
+  return count;
+}
+
 var updateCart = function () {
   // Write this function. In this function we render the page.
   // Meaning we make sure that all our cart items are displayed in the browser.
   // Remember to empty the "cart div" before you re-add all the item elements.
 
   $('.cart-list').empty();
-  // $('.total').text(0);
 
   var total = 0;
   for (var i in cart) {
-    $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price + '</span> <br>');
-    total += cart[i].price;
+    if (cart[i].amount !== 1)
+      $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price * cart[i].amount + ' (' + cart[i].amount + ')' + ' </span> <br>');
+    else
+      $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price + ' </span> <br>');
+
+    total += cart[i].price * cart[i].amount;
   }
 
   $('.total').text(total);
@@ -41,19 +53,33 @@ $('.view-cart').on('click', function () {
   $('.shopping-cart').toggleClass('show');
 });
 
+var _findIndex = function (name) {
+  for (var i in cart) {
+    if (name === cart[i].name) {
+      return i;
+    }
+  }
+  return -1;
+}
 
 $('.add-to-cart').on('click', function () {
   //  get the "item" object from the page
   var $clickedItem = $(this).closest('.card.item');
 
-  console.log($clickedItem.find('.price').text());
-  console.log($clickedItem.data().name);
-
-  var item = {
-    name: $clickedItem.data().name,
-    price: $clickedItem.data().price
+  // check if item exist
+  var index = _findIndex($clickedItem.data().name);
+  if (index !== -1) // the item is already in array cart
+    cart[index].amount++;
+  else // the item is not exist in array cart yet
+  {
+    var item = {
+      name: $clickedItem.data().name,
+      price: $clickedItem.data().price,
+      amount: 1
+    }
+    addItem(item); // add to cart array
   }
-  addItem(item);
+
   updateCart();
 });
 
