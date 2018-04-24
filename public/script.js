@@ -2,7 +2,7 @@
 var cart = [];
 
 var updateCart = function () {
-  // Write this function. In this function we render the page.
+  // In this function we render the page.
   // Meaning we make sure that all our cart items are displayed in the browser.
   // Remember to empty the "cart div" before you re-add all the item elements.
 
@@ -10,10 +10,11 @@ var updateCart = function () {
 
   var total = 0;
   for (var i in cart) {
-    var trash = '<a style="text-decoration: none;cursor: pointer;color:#323030cc;font-size: 17px;" class="removeItem" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
+    // var trash = '<a id="trash" style="text-decoration: none;cursor: pointer;color:#ff5351 ;font-size: 17px;" class="removeItem" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
+    var trash = '<a class="removeItem" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
     if (cart[i].amount !== 1)
       $('.cart-list').append('<span>' + cart[i].name
-        + ' - $' + cart[i].price * cart[i].amount + ' (' + cart[i].amount + ')' + trash);
+        + ' - $' + cart[i].price + ' (' + cart[i].amount + ')' + trash);
     else
       $('.cart-list').append('<span>' + cart[i].name
         + ' - $' + cart[i].price + trash);
@@ -43,7 +44,6 @@ var clearCart = function () {
 
 $('.view-cart').on('click', function () {
   // hide/show the shopping cart!
-
   $('.shopping-cart').toggleClass('show');
 });
 
