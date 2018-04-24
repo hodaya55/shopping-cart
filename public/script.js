@@ -84,7 +84,11 @@ $('.clear-cart').on('click', function () {
 $('.cart-list').on('click', '.removeItem', function () {
   var index = $(this).data().id;
   console.log("remove index: " + index);
+  if (cart[index].amount ===1)
   cart.splice(index, 1);
+  else
+  cart[index].amount--;
+ 
   // $(this).closest('span').remove(); // remove from page
   updateCart();
 });
