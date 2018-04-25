@@ -7,42 +7,71 @@ var updateCart = function () {
   // Remember to empty the "cart div" before you re-add all the item elements.
 
   $('.cart-list').empty();
-  // $('.total').text(0);
-
+  var output = '';
   var total = 0;
-  for (var i in cart) {
-    $('.cart-list').append('<span>' + cart[i].name + ' - $' + cart[i].price + '</span> <br>');
-    total += cart[i].price;
-  }
+  var button =
+      '<button type="button" class="btn btn-danger btn-xs remove">Remove</button>';
 
+  for (var i in cart) {
+    if (cart[i].amount === 1) {
+      output += '<p class="cart-item">' + cart[i].name +
+        ' - $' + cart[i].price + ' ' + button + '</p>';
+      total += cart[i].price;
+    } else {
+      output += '<p class="cart-item">' + cart[i].name +
+        ' (' + cart[i].amount + ') - $' + cart[i].price + ' ' + button + '</p>';
+      total += cart[i].price * cart[i].amount;
+    }
+  }
+  $('.cart-list').append(output);
   $('.total').text(total);
 
-}
-
+};
 
 var addItem = function (item) {
-  // Write this function. Remember this function has nothing to do with display. 
+  // Write this function. Remember this function has nothing to do with display.
   // It simply is for adding an item to the cart array, no HTML involved - honest ;-)
-
+  for (var i = 0; i < cart.length; i += 1) {
+    if (item.name === cart[i].name) {
+      cart[i].amount++;
+      return;
+    }
+  }
   cart.push(item);
-  console.log(cart);
-}
+};
+
 
 var clearCart = function () {
   // Write a function that clears the cart ;-)
   $('.total').text(0); // set back the total to $ 0
-  cart.length = 0; // empty all the cart array 
+  cart.length = 0; // empty all the cart array
   $('.cart-list').empty(); // empty the cartlist from page
-}
+};
+
+var removeItem = function(itemIndex) {
+  for (var i = 0; i < cart.length; i += 1) {
+    if (i === itemIndex) {
+      cart[i].amount === 1 ? cart.splice(i, 1) : cart[i].amount--;
+    }
+  }
+  updateCart();
+};
+
+$('.shopping-cart').on('click','.remove', function() {
+  var item = $(this).closest('.cart-item');
+  // remove item from cart
+  removeItem(item.index());
+  //update shopping cart on page
+  updateCart();
+});
 
 $('.view-cart').on('click', function () {
   // hide/show the shopping cart!
-
   $('.shopping-cart').toggleClass('show');
 });
 
 
-$('.add-to-cart').on('click', function () {
+$('.container').on('click', '.add-to-cart', function () {
   //  get the "item" object from the page
   var $clickedItem = $(this).closest('.card.item');
 
@@ -51,8 +80,9 @@ $('.add-to-cart').on('click', function () {
 
   var item = {
     name: $clickedItem.data().name,
-    price: $clickedItem.data().price
-  }
+    price: $clickedItem.data().price,
+    amount: 1
+  };
   addItem(item);
   updateCart();
 });
@@ -69,4 +99,4 @@ $('.navbar-toggle.collapsed').on('click', function () {
   $('.view-cart').css('display', 'none');
   $('.nav.navbar-nav.navbar-right').css('display', 'none');
   $('.shopping-cart').toggleClass('show');
-})
+});
