@@ -83,12 +83,13 @@ body {
 .shopping-cart {
     position: fixed;
     top: 55px;
-    right: 40px;
+    right:30px;
     display: none;
     background-color: #fff;
-    box-shadow: 2px 2px 2px #B3B3B3;
+    box-shadow: 2px 3px 3px #B3B3B3;
     padding: 15px;
     z-index: 999;
+    border: gray 1px solid;
 }
 
 .cart-title {
@@ -123,13 +124,14 @@ input {
 .addProduct-form {
     position: fixed;
     top: 55px;
-    right: 170px;
+    right: 180px;
     display: none;
     background-color: #fff;
-    box-shadow: 2px 2px 2px #B3B3B3;
+    box-shadow: 2px 3px 4px #B3B3B3;
     padding: 15px;
     z-index: 999;
     /* min-width: 200px; */
+    border: gray 1px solid;
 }
 
 .remove-item:hover {
@@ -140,4 +142,9 @@ input {
     text-decoration: none;
     color: #ff5351;
     font-size: 17px;
+}
+
+.btn{
+    background-color: #ff5351;
+    color: white;
 }
