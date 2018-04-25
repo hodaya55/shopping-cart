@@ -1,12 +1,29 @@
 // an array with all of our cart items
 var cart = [];
 
+var STORAGE_ID = 'shoppingCart';
+
+// This will stringify and save our entire cart array.
+var saveToLocalStorage = function () {
+  localStorage.setItem(STORAGE_ID, JSON.stringify(cart));
+}
+
+// This will get our cart array out of local storage and convert them back to JS objects
+// or, if none exists, it will simply return an empty array.
+var getFromLocalStorage = function () {
+  return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+}
+
+
 var updateCart = function () {
   // In this function we render the page.
   // Meaning we make sure that all our cart items are displayed in the browser.
-  // we "cart div" before we re-add all the item elements.
+  // we empty "cart div" before we re-add all the item elements.
 
   $('.cart-list').empty();
+
+  cart = getFromLocalStorage();
+
   var total = 0;
   for (var i in cart) {
     var trash = '<a role="button" class="remove-item" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
@@ -25,6 +42,8 @@ var updateCart = function () {
 var addItem = function (item) {
   //adding an item to the cart array
   cart.push(item);
+  // store
+  saveToLocalStorage();
 };
 
 
@@ -34,14 +53,19 @@ var clearCart = function () {
   $('.cart-list').empty(); // empty the cartlist from page
 };
 
-
+/***** event listeners: *****/
 $('.cart-list').on('click', '.remove-item', function () {
   var index = $(this).data().id;
+  // get
+  cart = getFromLocalStorage();
+
   if (cart[index].amount === 1)
     cart.splice(index, 1);
   else
     cart[index].amount--;
 
+  // store
+  saveToLocalStorage();
   updateCart();
 });
 
@@ -69,8 +93,11 @@ $('.container').on('click', '.add-to-cart', function () {
 
   // check if item exist
   var index = _findIndex($clickedItem.data().name);
-  if (index !== -1)
+  if (index !== -1) {
     cart[index].amount++;
+    // store
+    saveToLocalStorage();
+  }
   else {
     var item = {
       name: $clickedItem.data().name,
