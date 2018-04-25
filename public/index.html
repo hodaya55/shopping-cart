@@ -48,21 +48,23 @@
     <div class="shopping-cart">
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list"></div>
-      <p>Total: $
-        <span class="total">0</span>
+      <p> <strong>Total: $
+        <span class="total">0</span> </strong>
       </p>
       <button type="button" class="btn clear-cart">Clear Cart</button>
     </div>
 
-    <form>
+    <form style="margin-left: 180px">
         name :
         <input type="text" id="name" placeholde="name"></input>
         price :
         <input type="text" id="price" placeholde="price"></input>
         src :
         <input type="text" id="src" placeholde="src"></input>
-        <button id="AddBtn">Add new Item!</button>
-      </form>
+        <input type="button"  id="AddBtn" value="Add new product" ></button>
+        <br>
+        <span  id="error" style="display:none">This product name is already exist in system</span>
+    </form>
 
 
     <div class="row">
