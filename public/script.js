@@ -94,7 +94,6 @@ $('.cart-list').on('click', '.removeItem', function () {
 });
 
 
-
 // update the cart as soon as the page loads!
 updateCart();
 
