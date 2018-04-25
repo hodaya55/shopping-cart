@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
@@ -7,12 +8,14 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Shopping Cart!</title>
 </head>
+
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -26,11 +29,15 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
+            <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart
+              <i class="fa fa-shopping-cart"></i>
+            </a>
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
   </nav>
 
   <div class="page-header">
@@ -41,9 +48,23 @@
     <div class="shopping-cart">
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list"></div>
-      <p>Total: $<span class="total">0</span></p>
+      <p> <strong>Total: $
+        <span class="total">0</span> </strong>
+      </p>
       <button type="button" class="btn clear-cart">Clear Cart</button>
     </div>
+
+    <form style="margin-left: 180px">
+        name :
+        <input type="text" id="name" placeholde="name"></input>
+        price :
+        <input type="text" id="price" placeholde="price"></input>
+        src :
+        <input type="text" id="src" placeholde="src"></input>
+        <input type="button"  id="AddBtn" value="Add new product" ></button>
+        <br>
+        <span  id="error" style="display:none">This product name is already exist in system</span>
+    </form>
 
 
     <div class="row">
@@ -95,7 +116,7 @@
         </div>
       </div>
 
-    
+
     </div>
     <div class="row">
       <div class="col-md-4">
@@ -145,14 +166,20 @@
           </div>
         </div>
       </div>
+
+     
+
+
     </div>
   </div>
-    <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="addItem.js"></script>
 
-<!-- <script src="/jquery/dist/jquery.js "></script> -->
+  <!-- <script src="/jquery/dist/jquery.js "></script> -->
 
 </body>
+
 </html>
