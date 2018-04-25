@@ -28,11 +28,17 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" class="view-form" data-toggle="dropdown" role="button">Add new product
+              <i class="fa fa-plus"></i>
+            </a>
+          </li>
           <li class="dropdown">
             <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart
               <i class="fa fa-shopping-cart"></i>
             </a>
           </li>
+
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -48,22 +54,27 @@
     <div class="shopping-cart">
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list"></div>
-      <p> <strong>Total: $
-        <span class="total">0</span> </strong>
+      <p>
+        <strong>Total: $
+          <span class="total">0</span>
+        </strong>
       </p>
       <button type="button" class="btn clear-cart">Clear Cart</button>
     </div>
 
-    <form style="margin-left: 180px">
-        name :
-        <input type="text" id="name" placeholde="name"></input>
-        price :
-        <input type="text" id="price" placeholde="price"></input>
-        src :
-        <input type="text" id="src" placeholde="src"></input>
-        <input type="button"  id="AddBtn" value="Add new product" ></button>
-        <br>
-        <span  id="error" style="display:none">This product name is already exist in system</span>
+    <!-- for adding new product to page -->
+    <form class="addProduct-form">
+      Name :
+      <input type="text" id="name" placeholde="name"></input>
+      Price :
+      <input type="number" id="price" placeholde="price"></input>
+      URL image :
+      <input type="text" id="src" placeholde="url"></input>
+      <br>
+      <input type="button" id="AddBtn" value="Add new product">
+      </button>
+      <br>
+      <p id="msgError"></p>
     </form>
 
 
@@ -167,7 +178,7 @@
         </div>
       </div>
 
-     
+
 
 
     </div>
