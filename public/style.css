@@ -150,6 +150,8 @@ input {
 .btn{
     background-color: #ff5351;
     color: white;
+    margin: 0 auto;
+    display: table;
 }
 
 #msgError{
