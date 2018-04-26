@@ -59,47 +59,46 @@ $('#AddBtn').click(function () {
     $('#price').css('border-color', 'gray');
     $('#src').css('border-color', 'gray');
 
-// all is filled
-if (name !== '' && price !== '' && src!=='') {
-    var productArray = $('.container').find('.card.item');
-    // check if the product name is already exist - then display error message
-    // otherwise - add the product to the page
-    for (var i = 0; i < productArray.length; i++)
-        if (productArray[i].dataset.name === name) {
-            // empty the input of name and display error message
-            $('#name').val('');
-            $("#msgError").css("display", "block").fadeOut(4000);
-            return;
-        }
+    // all is filled
+    if (name !== '' && price !== '' && src !== '') {
+        var productArray = $('.container').find('.card.item');
+        // check if the product name is already exist - then display error message
+        // otherwise - add the product to the page
+        for (var i = 0; i < productArray.length; i++)
+            if (productArray[i].dataset.name === name) {
+                // empty the input of name and display error message
+                $('#name').val('');
+                $("#msgError").css("display", "block").fadeOut(4000);
+                return;
+            }
 
-   // when all is o.k
-    addProduct(name, price, src);
-}
-else if (price !== '' && src!==''){ //  name empty
-    $('#name').css('border-color', 'red');
-}
-else if (price !== '' && name!==''){ // src empty
-    $('#src').css('border-color', 'red');
-}
-else if(src !== '' && name!==''){ // price empty
-    $('#price').css('border-color', 'red');
-}
-else if (price !== ''){ //  name & src empty
-    $('#name').css('border-color', 'red');
-    $('#src').css('border-color', 'red');
-}
-else if (name !== ''){ // price & src empty
-    $('#price').css('border-color', 'red');
-    $('#src').css('border-color', 'red');
-}
-else // all is empty
-{
-    $('#name').css('border-color', 'red');
-    $('#price').css('border-color', 'red');
-    $('#src').css('border-color', 'red');
-    
-}
+        // when all is o.k
+        addProduct(name, price, src);
+    }
+    else if (price !== '' && src !== '') { //  name empty
+        $('#name').css('border-color', 'red');
+    }
+    else if (price !== '' && name !== '') { // src empty
+        $('#src').css('border-color', 'red');
+    }
+    else if (src !== '' && name !== '') { // price empty
+        $('#price').css('border-color', 'red');
+    }
+    else if (price !== '') { //  name & src empty
+        $('#name').css('border-color', 'red');
+        $('#src').css('border-color', 'red');
+    }
+    else if (name !== '') { // price & src empty
+        $('#price').css('border-color', 'red');
+        $('#src').css('border-color', 'red');
+    }
+    else // all is empty
+    {
+        $('#name').css('border-color', 'red');
+        $('#price').css('border-color', 'red');
+        $('#src').css('border-color', 'red');
 
+    }
 
 });
 
@@ -109,38 +108,3 @@ $('.view-form').on('click', function () {
     $('.addProduct-form').toggleClass('show');
 });
 
-
-// // all is filled
-// if (name !== '' && price !== '' && src!=='') {
-//     var productArray = $('.container').find('.card.item');
-//     // check if the product name is already exist - then display error message
-//     // otherwise - add the product to the page
-//     for (var i = 0; i < productArray.length; i++)
-//         if (productArray[i].dataset.name === name) {
-//             // empty the input of name and display error message
-//             $('#name').val('');
-//             $("#msgError").css("display", "block").fadeOut(4000);
-//             return;
-//         }
-
-//    // when all is o.k
-//     addProduct(name, price, src);
-// }
-// else if (price !== '' && src!==''){ //  name empty
-//     $('#name').css('border-color', 'red');
-// }
-// else if (price !== ''){ //  name & src empty
-//     $('#name').css('border-color', 'red');
-//     $('#src').css('border-color', 'red');
-// }
-// else if (name !== ''){ // price & src empty
-//     $('#price').css('border-color', 'red');
-//     $('#src').css('border-color', 'red');
-// }
-// else // all is empty
-// {
-//     $('#name').css('border-color', 'red');
-//     $('#price').css('border-color', 'red');
-//     $('#src').css('border-color', 'red');
-    
-// }
