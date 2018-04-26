@@ -148,3 +148,8 @@ input {
     background-color: #ff5351;
     color: white;
 }
+
+#msgError{
+    display: none;
+    color:red;
+}
