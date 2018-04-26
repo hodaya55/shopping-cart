@@ -27,8 +27,8 @@ var updateCart = function () {
   for (var i in cart) {
     var trash = '<a role="button" class="remove-item" data-id=' + i + '> <i class="fa fa-trash"></i> </a> </span> <br>';
     if (cart[i].amount !== 1)
-      $('.cart-list').append('<span class="cart-item"> ' + cart[i].name
-        + ' - $' + cart[i].price + ' (' + cart[i].amount + ')' + trash);
+      $('.cart-list').append('<span class="cart-item"> ' + cart[i].name + ' (' + cart[i].amount + ')'
+        + ' - $' + cart[i].price + trash);
     else
       $('.cart-list').append('<span class="cart-item">' + cart[i].name
         + ' - $' + cart[i].price + trash);
