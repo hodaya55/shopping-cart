@@ -26,41 +26,26 @@ $('#AddBtn').click(function () {
     var src = $('#src').val();
     var price = $('#price').val();
 
-    // if (name === '' && price === '' && src==='') {
-    //     $('#name').css('border-color', 'red');
-    //     $('#price').css('border-color', 'red');
-    //     $('#src').css('border-color', 'red');
-    // }
-    // else if (price === '' && src===''){
-    //     $('#price').css('border-color', 'red');
-    //     $('#src').css('border-color', 'red');
-    // }
-    // else if (name === '')
-    //     $('#name').css('border-color', 'red');
-
-    // else // all is filled
-    // {
-    //     var productArray = $('.container').find('.card.item');
-    //     // check if the product name is already exist - then display error message
-    //     // otherwise - add the product to the page
-    //     for (var i = 0; i < productArray.length; i++)
-    //         if (productArray[i].dataset.name === name) {
-    //             // empty the input of name and display error message
-    //             $('#name').val('');
-    //             $("#msgError").css("display", "block").fadeOut(4000);
-    //             return;
-    //         }
-
-    //    // when all is o.k
-    //     addProduct(name, price, src);
-    // }
-
     $('#name').css('border-color', 'gray');
     $('#price').css('border-color', 'gray');
     $('#src').css('border-color', 'gray');
 
-    // all is filled
-    if (name !== '' && price !== '' && src !== '') {
+    var checkAllFill = true;
+    if (price === '') {
+        checkAllFill = false;
+        $('#price').css('border-color', 'red');
+    }
+    if (name === '') {
+        checkAllFill = false;
+        $('#name').css('border-color', 'red');
+    }
+    if (src === '') {
+        checkAllFill = false;
+        $('#src').css('border-color', 'red');
+    }
+
+    // all field are filled
+    if (checkAllFill) {
         var productArray = $('.container').find('.card.item');
         // check if the product name is already exist - then display error message
         // otherwise - add the product to the page
@@ -74,30 +59,6 @@ $('#AddBtn').click(function () {
 
         // when all is o.k
         addProduct(name, price, src);
-    }
-    else if (price !== '' && src !== '') { //  name empty
-        $('#name').css('border-color', 'red');
-    }
-    else if (price !== '' && name !== '') { // src empty
-        $('#src').css('border-color', 'red');
-    }
-    else if (src !== '' && name !== '') { // price empty
-        $('#price').css('border-color', 'red');
-    }
-    else if (price !== '') { //  name & src empty
-        $('#name').css('border-color', 'red');
-        $('#src').css('border-color', 'red');
-    }
-    else if (name !== '') { // price & src empty
-        $('#price').css('border-color', 'red');
-        $('#src').css('border-color', 'red');
-    }
-    else // all is empty
-    {
-        $('#name').css('border-color', 'red');
-        $('#price').css('border-color', 'red');
-        $('#src').css('border-color', 'red');
-
     }
 
 });
