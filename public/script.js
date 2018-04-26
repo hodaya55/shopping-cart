@@ -68,11 +68,6 @@ $('.cart-list').on('click', '.remove-item', function () {
   updateCart();
 });
 
-$('.view-cart').on('click', function () {
-  // hide/show the shopping cart!
-  $('.shopping-cart').toggleClass('show');
-});
-
 
 var _findIndex = function (name) {
   for (var i in cart) {
@@ -113,10 +108,19 @@ $('.clear-cart').on('click', function () {
   clearCart();
 });
 
-// When burger-menu is clicked
-$('.navbar-toggle.collapsed').on('click', function () {
+
+$('.view-cart').on('click', function () {
+  // hide/show the shopping cart!
   $('.shopping-cart').toggleClass('show');
 });
+
+// When burger-menu is clicked
+$('.cart').on('click', function () {
+  $('.shopping-cart').toggleClass('show');
+});
+
+
+
 
 
 // update the cart as soon as the page loads!

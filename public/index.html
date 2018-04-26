@@ -14,31 +14,33 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        <button type="button" class="navbar-toggle collapsed cart" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
           aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <button type="button" class="navbar-toggle collapsed plus">
+          <span class="sr-only">Toggle navigation</span>
+          <i style="font-size:18px;" class="fa fa-plus"></i>
+        </button>
         <a class="navbar-brand" href="#">SHOPPING CART</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+      <div >
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="dropdown" >
             <a href="#" class="view-form" data-toggle="dropdown" role="button">Add new product
               <i class="fa fa-plus"></i>
-            </a>
+            </a> 
           </li>
-          <li class="dropdown">
+          <li class="dropdown" class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
             <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart
               <i class="fa fa-shopping-cart"></i>
             </a>
           </li>
-
         </ul>
       </div>
       <!-- /.navbar-collapse -->

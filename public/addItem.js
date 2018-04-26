@@ -69,3 +69,8 @@ $('.view-form').on('click', function () {
     $('.addProduct-form').toggleClass('show');
 });
 
+
+// When plus-menu is clicked
+$('.plus').on('click', function () {
+    $('.addProduct-form').toggleClass('show');
+  });
