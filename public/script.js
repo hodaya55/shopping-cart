@@ -14,6 +14,7 @@ var getFromLocalStorage = function () {
   return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
 }
 
+cart = getFromLocalStorage();
 
 var updateCart = function () {
   // In this function we render the page.
@@ -21,8 +22,6 @@ var updateCart = function () {
   // we empty "cart div" before we re-add all the item elements.
 
   $('.cart-list').empty();
-
-  cart = getFromLocalStorage();
 
   var total = 0;
   for (var i in cart) {
@@ -51,13 +50,13 @@ var clearCart = function () {
   $('.total').text(0); // set back the total to $ 0
   cart.length = 0; // empty all the cart array
   $('.cart-list').empty(); // empty the cartlist from page
+  // store
+  saveToLocalStorage();
 };
 
 /***** event listeners: *****/
 $('.cart-list').on('click', '.remove-item', function () {
   var index = $(this).data().id;
-  // get
-  cart = getFromLocalStorage();
 
   if (cart[index].amount === 1)
     cart.splice(index, 1);
