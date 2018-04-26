@@ -83,7 +83,7 @@ body {
 .shopping-cart {
     position: fixed;
     top: 55px;
-    right:30px;
+    right:18px;
     display: none;
     background-color: #fff;
     box-shadow: 2px 3px 3px #B3B3B3;
@@ -124,7 +124,7 @@ input {
 .addProduct-form {
     position: fixed;
     top: 55px;
-    right: 180px;
+    right: 176px;
     display: none;
     background-color: #fff;
     box-shadow: 2px 3px 4px #B3B3B3;
