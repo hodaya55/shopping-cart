@@ -4,17 +4,26 @@ var cart = [];
 var STORAGE_ID = 'shoppingCart';
 
 // This will stringify and save our entire cart array.
-var saveToLocalStorage = function () {
+var _saveToLocalStorage = function () {
   localStorage.setItem(STORAGE_ID, JSON.stringify(cart));
 }
 
 // This will get our cart array out of local storage and convert them back to JS objects
 // or, if none exists, it will simply return an empty array.
-var getFromLocalStorage = function () {
+var _getFromLocalStorage = function () {
   return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
 }
 
-cart = getFromLocalStorage();
+cart = _getFromLocalStorage();
+
+var _findIndex = function (name) {
+  for (var i in cart) {
+    if (name === cart[i].name) {
+      return i;
+    }
+  }
+  return -1;
+}
 
 var updateCart = function () {
   // In this function we render the page.
@@ -42,7 +51,7 @@ var addItem = function (item) {
   //adding an item to the cart array
   cart.push(item);
   // store
-  saveToLocalStorage();
+  _saveToLocalStorage();
 };
 
 
@@ -51,7 +60,7 @@ var clearCart = function () {
   cart.length = 0; // empty all the cart array
   $('.cart-list').empty(); // empty the cartlist from page
   // store
-  saveToLocalStorage();
+  _saveToLocalStorage();
 };
 
 /***** event listeners: *****/
@@ -64,19 +73,9 @@ $('.cart-list').on('click', '.remove-item', function () {
     cart[index].amount--;
 
   // store
-  saveToLocalStorage();
+  _saveToLocalStorage();
   updateCart();
 });
-
-
-var _findIndex = function (name) {
-  for (var i in cart) {
-    if (name === cart[i].name) {
-      return i;
-    }
-  }
-  return -1;
-}
 
 $('.container').on('click', '.add-to-cart', function () {
   // get the "item" object from the page
@@ -90,7 +89,7 @@ $('.container').on('click', '.add-to-cart', function () {
   if (index !== -1) {
     cart[index].amount++;
     // store
-    saveToLocalStorage();
+    _saveToLocalStorage();
   }
   else {
     var item = {

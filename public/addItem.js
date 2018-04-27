@@ -3,21 +3,17 @@
 var addProduct = function (name, price, src) {
     console.log('Im in add product');
 
-    $('#name').css('border-color', 'gray');
-    $('#price').css('border-color', 'gray');
-    $('#src').css('border-color', 'gray');
+    var newProduct = '<div class="col-md-4"> '
+        + '<div class="card-container"> '
+        + '<div class="card item" item data-name="' + name + '" data-price="' + price + '"> '
+        + '<div class="pricebox"> '
+        + '<p class="price"> $' + price + '</p>'
+        + '  </div><div class="buybox"> <p class="add-to-cart"> ADD TO CART </p> </div>'
+        + '<div class="card-inner">'
+        + ' <img src="' + src + '" class="proimage">'
+        + '  <img  class="proimage"> </div>  </div> </div> </div> ';
 
-    var s1 = '<div class="col-md-4"> ' +
-        '<div class="card-container"> ';
-    var s2 = '<div class="card item" item data-name="' + name + '" data-price="' + price + '"> ';
-    var s3 = '<div class="pricebox"> ' +
-        '<p class="price"> $' + price + '</p>';
-    var s4 = '  </div><div class="buybox"> <p class="add-to-cart"> ADD TO CART </p> </div>';
-    var s5 = '<div class="card-inner">' +
-        ' <img src="' + src + '" class="proimage">';
-    var s6 = '  <img  class="proimage"> </div>  </div> </div> </div> ';
-
-    $('.container').append(s1 + s2 + s3 + s4 + s5 + s6);
+    $('.container').append(newProduct);
 
 }
 
@@ -26,25 +22,26 @@ $('#AddBtn').click(function () {
     var src = $('#src').val();
     var price = $('#price').val();
 
-    $('#name').css('border-color', 'gray');
-    $('#price').css('border-color', 'gray');
-    $('#src').css('border-color', 'gray');
-
     var checkAllFill = true;
     if (price === '') {
         checkAllFill = false;
         $('#price').css('border-color', 'red');
     }
+    else $('#price').css('border-color', 'gray');
+
     if (name === '') {
         checkAllFill = false;
         $('#name').css('border-color', 'red');
     }
+    else $('#name').css('border-color', 'gray');
+
     if (src === '') {
         checkAllFill = false;
         $('#src').css('border-color', 'red');
     }
+    else $('#src').css('border-color', 'gray');
 
-    // all field are filled
+    // all fields are filled
     if (checkAllFill) {
         var productArray = $('.container').find('.card.item');
         // check if the product name is already exist - then display error message
@@ -73,4 +70,4 @@ $('.view-form').on('click', function () {
 // When plus-menu is clicked
 $('.plus').on('click', function () {
     $('.addProduct-form').toggleClass('show');
-  });
+});
