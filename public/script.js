@@ -113,14 +113,6 @@ $('.view-cart').on('click', function () {
   $('.shopping-cart').toggleClass('show');
 });
 
-// When burger-menu is clicked
-$('.cart').on('click', function () {
-  $('.shopping-cart').toggleClass('show');
-});
-
-
-
-
 
 // update the cart as soon as the page loads!
 updateCart();
