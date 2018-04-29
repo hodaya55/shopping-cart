@@ -30,7 +30,7 @@ var ShoppingCartApp = function () {
   var updateCart = function () {
     // In this function we render the page.
     // Meaning we make sure that all our cart items are displayed in the browser.
-    // we empty "cart div" before we re-add all the item elements.
+    // we empty "cart-list div" before we re-add all the item elements.
 
     $('.cart-list').empty();
 
@@ -115,7 +115,7 @@ $('.container').on('click', '.add-to-cart', function () {
   // if the item name is already in the array - update its amount
   // otherwise - add new item into cart array
   var $clickedItem = $(this).closest('.card.item');
-  app.addItem($clickedItem); // add to cart array
+  app.addItem($clickedItem);
   app.updateCart();
 });
 
@@ -129,9 +129,5 @@ $('.view-cart').on('click', function () {
   $('.shopping-cart').toggleClass('show');
 });
 
-// When burger-menu is clicked
-$('.cart').on('click', function () {
-  $('.shopping-cart').toggleClass('show');
-});
 
 
