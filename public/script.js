@@ -134,3 +134,4 @@ $('.cart').on('click', function () {
   $('.shopping-cart').toggleClass('show');
 });
 
+
